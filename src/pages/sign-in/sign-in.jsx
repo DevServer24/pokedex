@@ -5,6 +5,8 @@ import { Card,CardContent,CardDescription,CardFooter,CardHeader,CardTitle } from
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import Logo from '../../pokeball.svg'
 const SignIn = () =>{
     const [data,setData] = useState({
         email:'',password:''
@@ -51,9 +53,11 @@ const SignIn = () =>{
     return(
         <div className="">
           <div className="sign-body flex items-center justify-center h-screen">
+
       <Card className="w-[400px]">
-        <CardHeader>
-          <CardTitle className="text-center">Pokedex</CardTitle>
+        <CardHeader className={' inline-flex items-center gap-4'}>
+          <CardTitle className="t   ext-center">Pokedex</CardTitle>
+            <img src={Logo} width={'125'} height={40} alt="logo"  className="w-10"/>
         </CardHeader>
         <CardContent>
           <p className="text-center">Welcome Back</p>
@@ -88,6 +92,12 @@ const SignIn = () =>{
               Sign In
             </Button>
           </form>
+          <Link to={'/sign-up'}>
+            
+            <Button variant={'ghost'}>
+              Dont have an account?
+            </Button>
+            </Link>
         </CardContent>
       </Card>
     </div>       

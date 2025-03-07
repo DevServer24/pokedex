@@ -3,14 +3,33 @@ import Pokeball from '../../../pokeball.svg'
 import * as motion from 'motion/react-client'
 import { Button } from '../button'
 import { ChevronRight, ShoppingCart, Star, Shield, TrendingUp, Search, Menu } from "lucide-react"
+import { useState,useEffect } from 'react'
+import { Input } from '../input'
+import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTrigger } from '../alert-dialog'
 const Navbar = () =>{
     
     const navbarcontent=[
         {name:'Home',url:'/'},
         {name:'Collection',url:'/collection'},
         {name:'My Cards',url:'/inventory'},
-        {name:'Buy Points',url:'/buy'},
+        {name:'Buy Points',url:'/buy-packs'},
     ]
+    
+
+
+
+
+
+
+
+
+
+
+    const [search,setSearch] = useState(false)
+
+    const handleSearch = () => {
+      setSearch(prev => !prev)
+    }
     return(
         <nav className="flex items-center justify-between mx-auto shadow-md bg-red-400 text-white p-4">
             <div className="mx-auto">
@@ -47,10 +66,25 @@ const Navbar = () =>{
             </ul>
 
          <div className='mx-auto inline-flex gap-4'>
-         <Button variant="ghost" size="icon" className="hidden md:flex">
+          <AlertDialog>
+            <AlertDialogTrigger>
+         <Button variant="ghost" size="icon" className="hidden md:flex" onClick={handleSearch}>
               <Search className="h-5 w-5" />
               <span className="sr-only">Search</span>
             </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+            <div className=''>
+              <AlertDialogHeader className={'mb-4'}>
+                Anything you want to search?
+              </AlertDialogHeader>
+            <Input type={'search'} className={'w-full mb-4'}/>
+            <Button type='button' className={'w-full mb-4'}>
+              Search
+            </Button>
+            </div>
+            </AlertDialogContent>
+            </AlertDialog>
             <Button variant="ghost" size="icon" className="hidden md:flex">
               <ShoppingCart className="h-5 w-5" />
               <span className="sr-only">Cart</span>
@@ -70,6 +104,7 @@ const Navbar = () =>{
             </Button>
           </Link>
          </div>
+        
         </nav>
     )
 }
