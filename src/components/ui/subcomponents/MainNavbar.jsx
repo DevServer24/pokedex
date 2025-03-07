@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Pokeball from '../../../pokeball.svg'
 import * as motion from 'motion/react-client'
 import { Button } from '../button'
+import { ChevronRight, ShoppingCart, Star, Shield, TrendingUp, Search, Menu } from "lucide-react"
 const Navbar = () =>{
     
     const navbarcontent=[
@@ -45,7 +46,22 @@ const Navbar = () =>{
             ))}
             </ul>
 
-
+         <div className='mx-auto inline-flex gap-4'>
+         <Button variant="ghost" size="icon" className="hidden md:flex">
+              <Search className="h-5 w-5" />
+              <span className="sr-only">Search</span>
+            </Button>
+            <Button variant="ghost" size="icon" className="hidden md:flex">
+              <ShoppingCart className="h-5 w-5" />
+              <span className="sr-only">Cart</span>
+            </Button>
+         <Link to={'/sign-in'}>
+          <Button
+            
+            >
+         Sign In
+            </Button>
+          </Link>
           <Link to={'/sign-up'}>
           <Button
             
@@ -53,6 +69,7 @@ const Navbar = () =>{
             Sign Up
             </Button>
           </Link>
+         </div>
         </nav>
     )
 }
